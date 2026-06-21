@@ -1,0 +1,6 @@
+izhan izhan manager
+user user client
+izhan izhan manager
+cls clear client
+izhan izhan manager
+user user client
