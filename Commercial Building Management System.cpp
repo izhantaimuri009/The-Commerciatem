@@ -6,25 +6,21 @@
 struct Account {
     char user[30];
     char pass[30];
-    char type[10];
-};
+    char type[10]};
 struct Room {
     int id;
     int floor;
     int size;
     float price;
     int status;};
-
 struct BookLog {
     char cName[30];
     int rId;
     float rentAmt;
     float secDeposit;
 };
-
 char myType[10];
 char myName[30];
-
 // Functions List
 void signup();
 int login();
@@ -36,8 +32,7 @@ void matchAndBook();
 void showAllBookings();
 int main() {
     int option;
-    while (1) {
-        printf("\n--- COMMERCIAL BUILDING MANAGEMENT SYSTEM ---\n");
+    while (1) {printf("\n--- COMMERCIAL BUILDING MANAGEMENT SYSTEM ---\n");
         printf("1. Sign Up (Register)\n");
         printf("2. Sign In (Login)\n");
         printf("3. Exit Program\n");
@@ -183,7 +178,7 @@ void addOfficeSpace() {
     scanf("%d", &r.size);
     printf("Enter Monthly Rent Price: ");
     scanf("%f", &r.price);
-    r.status = 1; // 1 means free/available
+    r.status = 1;
     fprintf(fp, "%d %d %d %.2f %d\n", r.id, r.floor, r.size, r.price, r.status);
     fclose(fp);
     printf("Office Space added successfully!\n");
@@ -226,9 +221,7 @@ void matchAndBook() {
     int total = 0;
     int matchFound = 0;
     int targetIndex = -1;
-    // Load file records sequentially into array
     while (fscanf(fp, "%d %d %d %f %d", &list[total].id, &list[total].floor, &list[total].size, &list[total].price, &list[total].status) != EOF) {
-        // Match conditions: floor, space criteria, and availability status
         if (list[total].floor == fReq && list[total].size >= sReq && list[total].status == 1) {
             if (matchFound == 0) {
                 matchFound = 1;
@@ -245,7 +238,7 @@ void matchAndBook() {
         printf("=========================================\n");
         printf("Match Found! Office ID %d on Floor %d is allocated to you.\n", list[targetIndex].id, list[targetIndex].floor);
         float rent = list[targetIndex].price;
-        float security = rent * 2; // Security Deposit = 2 Months Rent
+        float security = rent * 2;
         float totalAmount = rent + security;
         printf("\n--- BILLING & RECEIPT DETAILS ---\n");
         printf("Monthly Rent: %.2f\n", rent);
